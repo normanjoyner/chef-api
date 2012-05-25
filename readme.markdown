@@ -1,0 +1,1 @@
+Dead simple chef API client in coffeescript. Just exposes `.auth(username, path_to_pemfile)` and `.request(url, body, callback)`. Body is a JSON object, and is optional. Requires the openssl binary because nodejs's crypto library can't do what we need to auth with chef.

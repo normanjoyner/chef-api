@@ -1,0 +1,17 @@
+{
+  "author": "",
+  "name": "chef",
+  "version": "0.0.1",
+  "repository": {
+    "url": ""
+  },
+  "dependencies": {
+    "request": "*"
+  },
+  "main": "chef",
+  "devDependencies": {},
+  "optionalDependencies": {},
+  "engines": {
+    "node": "*"
+  }
+}
