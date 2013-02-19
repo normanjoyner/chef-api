@@ -1,12 +1,28 @@
 {
-  "author": "Norman Joyner <norman.joyner@gmail.com>",
   "name": "chef-api",
   "version": "0.0.1",
+  "description": "Provides simple access to the chef server api",
+  "author": "Norman Joyner <norman.joyner@gmail.com>",
+  "license": "MIT",
+  "main": "chef-api",
+  "readmeFilename": "README.md",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/normanjoyner/chef-api.git"
+  },
   "dependencies": {
     "request": "2.12.x"
   },
-  "main": "chef",
   "engines": {
-    "node": "0.x.x"
-  }
+    "node": "*"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "chef",
+    "chef-server",
+    "api"
+  ]
 }
