@@ -1,5 +1,5 @@
 {
-  "author": "Norman Joyner <norman.joyner@gmail.com",
+  "author": "Norman Joyner <norman.joyner@gmail.com>",
   "name": "chef-api",
   "version": "0.0.1",
   "dependencies": {
