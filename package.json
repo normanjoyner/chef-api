@@ -1,17 +1,12 @@
 {
-  "author": "",
-  "name": "chef",
+  "author": "Norman Joyner <norman.joyner@gmail.com",
+  "name": "chef-api",
   "version": "0.0.1",
-  "repository": {
-    "url": ""
-  },
   "dependencies": {
-    "request": "*"
+    "request": "2.12.x"
   },
   "main": "chef",
-  "devDependencies": {},
-  "optionalDependencies": {},
   "engines": {
-    "node": "*"
+    "node": "0.x.x"
   }
 }
