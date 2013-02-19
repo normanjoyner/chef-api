@@ -4,7 +4,7 @@ chef-api
 ##About
 
 ###Description
-A simple way to access the chef server api
+A nodejs implementation to provide simple access the chef server api
 
 ###Author
 Norman Joyner - norman.joyner@gmail.com
