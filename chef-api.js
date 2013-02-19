@@ -18,7 +18,7 @@ exports.config = function(options) {
 var http_methods = {
 
     get: function(uri, qs, fn){
-        operations.request(uri, qs, "GET", function(err, response){
+        operations.request(uri, qs, null, "GET", function(err, response){
             if(response.error){
                 err = new Error(response.error);
                 response = null;
@@ -65,7 +65,7 @@ var operations = {
         return sum.digest('base64');
     },
 
-    request: function(url, body, method, fn){
+    request: function(url, qs, body, method, fn){
         operations.sign(url, body, method, function(headers){
 
             var data = {
@@ -74,8 +74,8 @@ var operations = {
                 headers: headers
             }
 
-            if(method == "GET" && body)
-                data.qs = body;
+            if(qs)
+                data.qs = qs;
 
             request(data, function(err, response){
                 if(err)
