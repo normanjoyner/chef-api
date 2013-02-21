@@ -1,6 +1,6 @@
 {
   "name": "chef-api",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Provides simple access to the chef server api",
   "author": "Norman Joyner <norman.joyner@gmail.com>",
   "license": "MIT",
@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "request": "2.12.x"
+    "underscore": "1.4.x"
   },
   "engines": {
     "node": "*"
@@ -22,6 +23,7 @@
   },
   "keywords": [
     "chef",
+    "chef-api",
     "chef-server",
     "api"
   ]
