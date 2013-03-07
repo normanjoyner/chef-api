@@ -4,7 +4,7 @@ var opts = {
     host_url: ""
 }
 
-config = function(options) {
+var config = function(options) {
     opts.user = options.username,
     opts.key = options.key, 
     opts.host_url = ["https://api.opscode.com/organizations", options.organization].join("/")
