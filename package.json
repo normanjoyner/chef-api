@@ -1,6 +1,6 @@
 {
   "name": "chef-api",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Provides simple access to the chef server api",
   "author": "Norman Joyner <norman.joyner@gmail.com>",
   "license": "MIT",
