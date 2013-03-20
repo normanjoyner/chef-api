@@ -7,7 +7,7 @@ var opts = {
 var config = function(options) {
     opts.user = options.username,
     opts.key = options.key, 
-    opts.host_url = ["https://api.opscode.com/organizations", options.organization].join("/")
+    opts.host_url = options.url || ["https://api.opscode.com/organizations", options.organization].join("/")
 }
 
 exports.config = config;
