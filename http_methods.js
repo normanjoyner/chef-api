@@ -4,6 +4,9 @@ var http_methods = {
 
     get: function(uri, qs, fn){
         operations.request(uri, qs, null, "GET", function(err, response){
+            if(err)
+                throw err;
+
             if(response.error){
                 err = new Error(response.error);
                 response = null;
@@ -15,6 +18,9 @@ var http_methods = {
 
     put: function(uri, data, fn){
         operations.request(uri, null, data, "PUT", function(err, response){
+            if(err)
+                throw err;
+
             if(response.error){
                 err = new Error(response.error);
                 response = null;
@@ -26,6 +32,9 @@ var http_methods = {
 
     post: function(uri, data, fn){
         operations.request(uri, null, data, "POST", function(err, response){
+            if(err)
+                throw err;
+
             if(response.error){
                 err = new Error(response.error);
                 response = null;
