@@ -43,9 +43,9 @@ Example usage with hosted chef server:
 var chef = require("chef-api");
 
 var options = {
-    username: "username",
-    key: "/Users/username/.chef/username.pem",
-    organization: "organization"
+    username: "myusername",
+    key: "/Users/myusername/.chef/myusername.pem",
+    organization: "myorganization"
 }
 
 chef.config(options);
@@ -63,8 +63,8 @@ Example usage with private chef server:
 var chef = require("chef-api");
 
 var options = {
-    username: "clientname",
-    key: "/etc/chef/clientname.pem",
+    username: "myclientname",
+    key: "/etc/chef/myclientname.pem",
     url: "https://mychefserver.com:4000"
 }
 
