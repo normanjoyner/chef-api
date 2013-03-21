@@ -38,7 +38,7 @@ You are now free to make API calls.
 
 ###Examples
 
-Example usage with hosted chef server:
+Example usage with hosted chef server, accessing API through a user's pem:
 ```javascript
 var chef = require("chef-api");
 
@@ -58,7 +58,7 @@ chef.getNodes(function(err, res){
 });
 ```
 
-Example usage with private chef server:
+Example usage with private chef server, accessing API through a client's pem:
 ```javascript
 var chef = require("chef-api");
 
