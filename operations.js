@@ -1,8 +1,11 @@
 // import dependencies
+var fs = require("fs");
 var request = require('request');
 var url = require('url');
 var crypto = require('crypto');
 var exec = require('child_process').exec;
+var _ = require("underscore");
+var key = require('ursa').coercePrivateKey;
 var config = require([__dirname, "config"].join("/")).options;
 
 var operations = {
@@ -10,12 +13,24 @@ var operations = {
     sign: function(uri, body, method, fn){
         var timestamp = new Date().toISOString().replace(/\....Z/, "Z");
         var hashedPath = operations.sha(url.parse(uri).path);
-        var hash = operations.sha((body ? JSON.stringify(body) : ''));
-        var canonicalRequest = "Method:" + method + "\\nHashed Path:" + hashedPath + "\\nX-Ops-Content-Hash:" + hash + "\\nX-Ops-Timestamp:" + timestamp + "\\nX-Ops-UserId:" + config.user;
-        exec("printf '" + canonicalRequest + "' | openssl rsautl -sign -inkey " + config.key + " | openssl enc -base64", function(err, stdout){
-            var h, headers, i, signature, _i, _len, _ref1;
-            var signature = stdout.replace(/\s+/g, '');
-            headers = {
+        var hash = operations.sha((body ? JSON.stringify(body) : ""));
+
+        var request_headers = {
+            "Method": method,
+            "Hashed Path": hashedPath,
+            "X-Ops-Content-Hash": hash,
+            "X-Ops-Timestamp": timestamp,
+            "X-Ops-UserId": config.user
+        }
+
+        var request_headers = _.map(_.pairs(request_headers), function(header){
+            return header.join(":");
+        }).join("\n");
+
+        fs.readFile(config.key, function(err, key_contents){
+            var signature = key(key_contents).privateEncrypt(request_headers, 'utf8', 'base64');
+
+            var auth_headers = {
                 "Accept": "application/json",
                 "X-Ops-Timestamp": timestamp,
                 "X-Ops-UserId": config.user,
@@ -23,13 +38,14 @@ var operations = {
                 "X-Chef-Version": "0.10.4",
                 "X-Ops-Sign": "version=1.0"
             };
-            _ref1 = signature.match(/.{1,60}/g);
-            for (i = _i = 0, _len = _ref1.length; _i < _len; i = ++_i) {
-                h = _ref1[i];
-                headers["X-Ops-Authorization-" + (i + 1)] = h;
-            }
 
-            return fn(headers);
+            var auth_header_count = 0;
+            _.each(signature.match(/.{1,60}/g), function(signature_section){
+                var name = ["X-Ops-Authorization", ++auth_header_count].join("-");
+                auth_headers[name] = signature_section;
+            });
+
+            fn(auth_headers);
         });
     },
 
@@ -59,9 +75,9 @@ var operations = {
 
             request(data, function(err, response){
                 if(err)
-                    return fn(err, null);
+                    fn(err, null);
                 else
-                    return fn(null, JSON.parse(response.body));
+                    fn(null, JSON.parse(response.body));
             });
 
         });
