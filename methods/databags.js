@@ -28,8 +28,20 @@ var methods = {
         });
     },
 
-    createDataBag: function(databag, data, fn){
+    createDataBag: function(data, fn){
+        http_methods.post([config.host_url, "data"].join("/"), data, function(err, response){
+            fn(err, response);
+        });
+    },
+
+    createDataBagItem: function(databag, data, fn){
         http_methods.post([config.host_url, "data",  databag].join("/"), data, function(err, response){
+            fn(err, response);
+        });
+    },
+
+    deleteDataBagItem: function(databag, item, fn){
+        http_methods.del([config.host_url, "data", databag, item].join("/"), function(err, response){
             fn(err, response);
         });
     }

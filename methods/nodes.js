@@ -20,6 +20,24 @@ var methods = {
         http_methods.get([config.host_url, "nodes", node, "cookbooks"].join("/"), null, function(err, response){
             fn(err, response);
         });
+    },
+
+    createNode: function(body, fn){
+        http_methods.post([config.host_url, "nodes"].join("/"), body, function(err, response){
+            fn(err, response);
+        });
+    },
+
+    deleteNode: function(node, fn){
+        http_methods.del([config.host_url, "nodes", node].join("/"), function(err, response){
+            fn(err, response);
+        });
+    },
+
+    editNode: function(node, data, fn){
+        http_methods.put([config.host_url, "nodes", node].join("/"), data, function(err, response){
+            fn(err, response);
+        });
     }
 
 }
