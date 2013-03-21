@@ -42,6 +42,20 @@ var http_methods = {
 
             fn(err, response);
         });
+    },
+
+    del: function(uri, fn){
+        operations.request(uri, null, null, "DELETE", function(err, response){
+            if(err)
+                throw err;
+
+            if(response.error){
+                err = new Error(response.error);
+                response = null;
+            }
+
+            fn(err, response);
+        });
     }
 
 }
