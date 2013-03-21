@@ -74,10 +74,7 @@ var operations = {
             }
 
             request(data, function(err, response){
-                if(err)
-                    fn(err, null);
-                else
-                    fn(null, JSON.parse(response.body));
+                fn(err, JSON.parse(response.body));
             });
 
         });
