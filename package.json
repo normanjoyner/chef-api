@@ -1,10 +1,10 @@
 {
   "name": "chef-api",
-  "version": "0.1.4",
+  "version": "0.2.0",
   "description": "A simple chef server api wrapper",
   "author": "Norman Joyner <norman.joyner@gmail.com>",
   "license": "MIT",
-  "main": "chef-api",
+  "main": "main",
   "readmeFilename": "README.md",
   "repository": {
     "type": "git",
