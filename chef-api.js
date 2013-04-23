@@ -1,20 +1,25 @@
 // import dependencies
-var _ = require("underscore");
 var fs = require("fs");
-
-var availableMethods = [];
+var _ = require("underscore");
 var methodsFiles = fs.readdirSync([__dirname, "methods"].join("/"));
 
-_.each(methodsFiles, function(file){
-    if(/\.js$/.test(file))
-        availableMethods.push(require([__dirname, "methods", file].join("/")).methods);
-});
+exports.getObject = function(){
+    var object = {};
 
-_.each(availableMethods, function(methods){
-    _.each(_.keys(methods), function(method){
-        exports[method] = methods[method];
+    object.options = {};
+    object.config = function(options){
+        object.options.name =  options.user_name || options.client_name,
+        object.options.key_contents = options.key || fs.readFileSync(options.key_path),
+        object.options.host_url = options.url || ["https://api.opscode.com/organizations", options.organization].join("/")
+    }
+
+    _.each(methodsFiles, function(file){
+        if(/\.js$/.test(file)){
+            _.each(require([__dirname, "methods", file].join("/")).methods(object.options), function(method, method_name){
+                object[method_name] = method;
+            });
+        }
     });
-});
 
-exports.config = require([__dirname, "config"].join("/")).config;
-
+    return object;
+}
