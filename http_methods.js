@@ -1,63 +1,62 @@
-var operations = require([__dirname, "operations"].join("/")).operations;
+exports.http_methods = function(config){
+    var operations = require([__dirname, "operations"].join("/")).operations(config);
 
-var http_methods = {
+    return {
+        get: function(uri, qs, fn){
+            operations.request(uri, qs, null, "GET", function(err, response){
+                if(err)
+                    throw err;
 
-    get: function(uri, qs, fn){
-        operations.request(uri, qs, null, "GET", function(err, response){
-            if(err)
-                throw err;
+                if(response.error){
+                    err = new Error(response.error);
+                    response = null;
+                }
 
-            if(response.error){
-                err = new Error(response.error);
-                response = null;
-            }
+                fn(err, response);
+            });
+        },
 
-            fn(err, response);
-        });
-    },
+        put: function(uri, data, fn){
+            operations.request(uri, null, data, "PUT", function(err, response){
+                if(err)
+                    throw err;
 
-    put: function(uri, data, fn){
-        operations.request(uri, null, data, "PUT", function(err, response){
-            if(err)
-                throw err;
+                if(response.error){
+                    err = new Error(response.error);
+                    response = null;
+                }
 
-            if(response.error){
-                err = new Error(response.error);
-                response = null;
-            }
+                fn(err, response);
+            });
+        },
 
-            fn(err, response);
-        });
-    },
+        post: function(uri, data, fn){
+            operations.request(uri, null, data, "POST", function(err, response){
+                if(err)
+                    throw err;
 
-    post: function(uri, data, fn){
-        operations.request(uri, null, data, "POST", function(err, response){
-            if(err)
-                throw err;
+                if(response.error){
+                    err = new Error(response.error);
+                    response = null;
+                }
 
-            if(response.error){
-                err = new Error(response.error);
-                response = null;
-            }
+                fn(err, response);
+            });
+        },
 
-            fn(err, response);
-        });
-    },
+        del: function(uri, fn){
+            operations.request(uri, null, null, "DELETE", function(err, response){
+                if(err)
+                    throw err;
 
-    del: function(uri, fn){
-        operations.request(uri, null, null, "DELETE", function(err, response){
-            if(err)
-                throw err;
+                if(response.error){
+                    err = new Error(response.error);
+                    response = null;
+                }
 
-            if(response.error){
-                err = new Error(response.error);
-                response = null;
-            }
-
-            fn(err, response);
-        });
+                fn(err, response);
+            });
+        }
     }
-
 }
 
-exports.http_methods = http_methods;
