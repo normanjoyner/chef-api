@@ -54,6 +54,11 @@ exports.operations = function(config){
         },
 
         request: function(url, qs, body, method, fn){
+            
+            var body;
+            if (qs)
+                body = {q:qs};
+            
             this.sign(url, body, method, function(headers){
 
                 var data = {
@@ -62,14 +67,9 @@ exports.operations = function(config){
                     headers: headers
                 }
 
-                if(qs)
-                    data.qs = qs;
-
-                if(body){
-                    data.body = JSON.stringify(body);
-                    data.headers['Content-type'] = "application/json";
-                }
-
+                data.body = JSON.stringify(body);
+                data.headers['Content-type'] = "application/json";
+                
                 request(data, function(err, response){
                     fn(err, JSON.parse(response.body));
                 });
