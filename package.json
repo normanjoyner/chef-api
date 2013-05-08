@@ -11,7 +11,7 @@
     "url": "git://github.com/normanjoyner/chef-api.git"
   },
   "dependencies": {
-    "request": "2.12.x",
+    "request": "2.21.x",
     "underscore": "1.4.x",
     "ursa": "0.8.x"
   },
