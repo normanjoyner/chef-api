@@ -30,7 +30,7 @@ var options = {
     key: "-----BEGIN RSA PRIVATE KEY-----\n...\n-----END RSA PRIVATE KEY-----", // (required unless using 'key_path') contents of private key
     organization: "myorganization", // (required unless using 'url') organization name for use with hosted chef
     url: "https://mychefserver.com:4000", // (required unless using 'organization') url for use with private chef server
-    ca: "-----BEGIN CERTIFICATE-----\n...\n-----END CERTIFICATE-----", // if this key is omitted, then the default CA chain will be used. If null, the client will operate unsafely and not validate the server's certificat, it set to a certificate list explicitly, that list will be used as the CA chain.
+    ca: "-----BEGIN CERTIFICATE-----\n...\n-----END CERTIFICATE-----", // (optional) if this key is omitted, then the default CA chain will be used. If null, the client will operate unsafely and not validate the server's certificat, it set to a certificate list explicitly, that list will be used as the CA chain.
 }
 
 chef.config(options);
