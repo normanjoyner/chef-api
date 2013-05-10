@@ -60,7 +60,7 @@ exports.operations = function(config){
                     url: url,
                     method: method,
                     headers: headers,
-                    qs: {q: qs}
+                    qs: qs || {}
                 }
 
                 if(config.hasOwnProperty('ca')) {
