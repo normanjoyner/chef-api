@@ -59,11 +59,9 @@ exports.operations = function(config){
                 var data = {
                     url: url,
                     method: method,
-                    headers: headers
+                    headers: headers,
+                    qs: {q: qs}
                 }
-
-                if(qs)
-                    data.qs = qs;
 
                 if(config.hasOwnProperty('ca')) {
                     if(config.ca === null) {
