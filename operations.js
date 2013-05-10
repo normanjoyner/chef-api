@@ -65,13 +65,22 @@ exports.operations = function(config){
                 if(qs)
                     data.qs = qs;
 
+                if(config.hasOwnProperty('ca')) {
+                    if(config.ca === null) {
+                        data.strictSSL = false;
+                        data.rejectUnauthorized = false;
+                    }
+                    else
+                        data.ca = config.ca;
+                }
+
                 if(body){
                     data.body = JSON.stringify(body);
                     data.headers['Content-type'] = "application/json";
                 }
 
                 request(data, function(err, response){
-                    fn(err, JSON.parse(response.body));
+                    fn(err, JSON.parse(response ? response.body : null));
                 });
             });
         }
