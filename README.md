@@ -4,7 +4,7 @@ chef-api
 ##About
 
 ###Description
-A simple chef server api wrapper, implemented in nodejs.
+A simple client providing access the chef server api, implemented in nodejs
 
 ###Author
 Norman Joyner - norman.joyner@gmail.com
