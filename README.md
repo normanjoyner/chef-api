@@ -46,7 +46,7 @@ var ChefApi = require("chef-api");
 var chef = new ChefApi();
 
 var options = {
-    username: "myusername",
+    user_name: "myusername",
     key_path: "/Users/myusername/.chef/myusername.pem",
     organization: "myorganization"
 }
