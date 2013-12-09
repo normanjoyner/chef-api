@@ -19,6 +19,12 @@ exports.methods = function(config){
             http_methods.put([config.host_url, "clients", client].join("/"), data, function(err, response){
                 fn(err, response);
             });
+        },
+
+        deleteClient: function(client, fn) {
+            http_methods.del([config.host_url, "clients", client].join("/"), function(err, response) {
+                fn(err, response);
+            });
         }
     }
 
