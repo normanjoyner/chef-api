@@ -13,6 +13,10 @@
     chef.editClient("client_name", {"body": "data"}, function(err, client){
     });
 ```
+```javascript
+    chef.deleteClient("client_name", function(err, client){
+    });
+```
 
 ###Cookbooks
 ```javascript
