@@ -77,7 +77,7 @@ exports.operations = function(config){
                 }
 
                 request(data, function(err, response){
-                    if(response.statusCode == 200){
+                    if(response.statusCode >= 200 && response.statusCode <= 206){
                         try{
                             fn(null, JSON.parse(response.body));
                         }
