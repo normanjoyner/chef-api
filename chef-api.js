@@ -1,6 +1,6 @@
 // import dependencies
 var fs = require("fs");
-var _ = require("underscore");
+var _ = require("lodash");
 var methodsFiles = fs.readdirSync([__dirname, "methods"].join("/"));
 
 exports.getObject = function(){
