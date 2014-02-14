@@ -12,9 +12,7 @@ Norman Joyner - norman.joyner@gmail.com
 ##Getting Started
 
 ###Installation
-```
-npm install chef-api
-```
+```npm install chef-api```
 
 ###Configuration
 
