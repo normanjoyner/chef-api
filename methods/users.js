@@ -5,31 +5,31 @@ exports.methods = function(config){
     return {
         getUsers: function(fn){
             http_methods.get([config.host_url, "users"].join("/"), null, function(err, response){
-                fn(err, response);
+                return fn(err, response);
             });
         },
 
         createUser: function(body, fn){
             http_methods.post([config.host_url, "users"].join("/"), body, function(err, response){
-                fn(err, response);
+                return fn(err, response);
             });
         },
 
         getUser: function(user, fn){
             http_methods.get([config.host_url, "users", user].join("/"), null, function(err, response){
-                fn(err, response);
+                return fn(err, response);
             });
         },
 
         deleteUser: function(user, fn){
             http_methods.del([config.host_url, "users", user].join("/"), function(err, response){
-                fn(err, response);
+                return fn(err, response);
             });
         },
 
         editUser: function(user, data, fn){
             http_methods.put([config.host_url, "users", user].join("/"), data, function(err, response){
-                fn(err, response);
+                return fn(err, response);
             });
         }
     }

@@ -42,7 +42,7 @@ exports.operations = function(config){
                 auth_headers[name] = signature_section;
             });
 
-            fn(auth_headers);
+            return fn(auth_headers);
         },
 
         sha: function(str){
@@ -80,10 +80,10 @@ exports.operations = function(config){
                     if (response) {
                       if(response.statusCode >= 200 && response.statusCode <= 206){
                           try{
-                              fn(null, JSON.parse(response.body));
+                              return fn(null, JSON.parse(response.body));
                           }
                           catch(e){
-                              fn(new Error("Cannot parse response body"), null);
+                              return fn(new Error("Cannot parse response body"), null);
                           }
                       }
                       else{
@@ -94,13 +94,13 @@ exports.operations = function(config){
                                   message = [message, body.error].join(" - ");
                           }
                           catch(e){
-                              fn(new Error(message), null);
+                              return fn(new Error(message), null);
                           }
-                          fn(new Error(message), null);
+                          return fn(new Error(message), null);
                       }
                     }
                     else {
-                      fn(err, null);
+                      return fn(err, null);
                     }
                 });
             });

@@ -9,7 +9,7 @@ exports.http_methods = function(config){
                     response = null;
                 }
 
-                fn(err, response);
+                return fn(err, response);
             });
         },
 
@@ -20,7 +20,7 @@ exports.http_methods = function(config){
                     response = null;
                 }
 
-                fn(err, response);
+                return fn(err, response);
             });
         },
 
@@ -31,7 +31,7 @@ exports.http_methods = function(config){
                     response = null;
                 }
 
-                fn(err, response);
+                return fn(err, response);
             });
         },
 
@@ -42,7 +42,7 @@ exports.http_methods = function(config){
                     response = null;
                 }
 
-                fn(err, response);
+                return fn(err, response);
             });
         }
     }

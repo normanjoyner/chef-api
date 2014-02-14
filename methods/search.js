@@ -6,14 +6,14 @@ exports.methods = function(config){
         // http://docs.opscode.com/api_chef_server_search.html#get
         getSearch: function(fn){
             http_methods.get([config.host_url, "search"].join("/"), null, function(err, response){
-                fn(err, response);
+                return fn(err, response);
             });
         }, 
 
         // http://docs.opscode.com/api_chef_server_search_index.html#get
         getSearchIndex: function(index, qs, fn){
             http_methods.get([config.host_url, "search", index].join("/"), qs, function(err, response){
-                fn(err, response);
+                return fn(err, response);
             });
         }
         /*
