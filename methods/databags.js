@@ -26,21 +26,21 @@ exports.methods = function(config){
 
         // http://docs.opscode.com/api_chef_server_data_bag_item.html#put
         editDataBagItem: function(databag, item, data, fn){
-            http_methods.put([config.host_url, "data",  databag, item].join("/"), data, function(err, response){
+            http_methods.put([config.host_url, "data",  databag, item].join("/"), null, data, function(err, response){
                 return fn(err, response);
             });
         },
 
         // http://docs.opscode.com/api_chef_server_data_bag.html#post
         createDataBag: function(data, fn){
-            http_methods.post([config.host_url, "data"].join("/"), data, function(err, response){
+            http_methods.post([config.host_url, "data"].join("/"), null, data, function(err, response){
                 return fn(err, response);
             });
         },
 
         // http://docs.opscode.com/api_chef_server_data_bag_name.html#post
         createDataBagItem: function(databag, data, fn){
-            http_methods.post([config.host_url, "data",  databag].join("/"), data, function(err, response){
+            http_methods.post([config.host_url, "data",  databag].join("/"), null, data, function(err, response){
                 return fn(err, response);
             });
         },

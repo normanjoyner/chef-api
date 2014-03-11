@@ -19,14 +19,14 @@ exports.methods = function(config){
 
         // http://docs.opscode.com/api_chef_server_clients_name.html#put
         editClient: function(client, data, fn){
-            http_methods.put([config.host_url, "clients", client].join("/"), data, function(err, response){
+            http_methods.put([config.host_url, "clients", client].join("/"), null, data, function(err, response){
                 return fn(err, response);
             });
         },
 
         // http://docs.opscode.com/api_chef_server_clients.html#post
         createClient: function(data, fn){
-            http_methods.post([config.host_url, "clients"].join("/"), data, function(err, response){
+            http_methods.post([config.host_url, "clients"].join("/"), null, data, function(err, response){
                 return fn(err, response);
             });
         },

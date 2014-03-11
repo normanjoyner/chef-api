@@ -10,7 +10,7 @@ exports.methods = function(config){
         },
 
         createUser: function(body, fn){
-            http_methods.post([config.host_url, "users"].join("/"), body, function(err, response){
+            http_methods.post([config.host_url, "users"].join("/"), null, body, function(err, response){
                 return fn(err, response);
             });
         },
@@ -28,7 +28,7 @@ exports.methods = function(config){
         },
 
         editUser: function(user, data, fn){
-            http_methods.put([config.host_url, "users", user].join("/"), data, function(err, response){
+            http_methods.put([config.host_url, "users", user].join("/"), null, data, function(err, response){
                 return fn(err, response);
             });
         }

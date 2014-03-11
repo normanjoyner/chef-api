@@ -19,7 +19,7 @@ exports.methods = function(config){
 
         // http://docs.opscode.com/api_chef_server_roles.html#post
         createRole: function(body, fn){
-            http_methods.post([config.host_url, "roles"].join("/"), body, function(err, response){
+            http_methods.post([config.host_url, "roles"].join("/"), null, body, function(err, response){
                 return fn(err, response);
             });
         },
@@ -33,7 +33,7 @@ exports.methods = function(config){
  
          // http://docs.opscode.com/api_chef_server_roles_name.html#put
          editRole: function(role, data, fn){
-             http_methods.put([config.host_url, "roles", role].join("/"), data, function(err, response){
+             http_methods.put([config.host_url, "roles", role].join("/"), null, data, function(err, response){
                  return fn(err, response);
              });
          }

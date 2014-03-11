@@ -25,7 +25,7 @@ exports.methods = function(config){
 
         // http://docs.opscode.com/api_chef_server_nodes.html#post
         createNode: function(data, fn){
-            http_methods.post([config.host_url, "nodes"].join("/"), data, function(err, response){
+            http_methods.post([config.host_url, "nodes"].join("/"), null, data, function(err, response){
                 return fn(err, response);
             });
         },
@@ -39,7 +39,7 @@ exports.methods = function(config){
 
         // http://docs.opscode.com/api_chef_server_nodes_name.html#put
         editNode: function(node, data, fn){
-            http_methods.put([config.host_url, "nodes", node].join("/"), data, function(err, response){
+            http_methods.put([config.host_url, "nodes", node].join("/"), null, data, function(err, response){
                 return fn(err, response);
             });
         }

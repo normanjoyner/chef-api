@@ -12,7 +12,7 @@ exports.methods = function(config){
 
         // http://docs.opscode.com/api_chef_server_environments.html#post
         createEnvironment: function(body, fn){
-            http_methods.post([config.host_url, "environments"].join("/"), body, function(err, response){
+            http_methods.post([config.host_url, "environments"].join("/"), null, body, function(err, response){
                 return fn(err, response);
             });
         },

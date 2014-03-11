@@ -26,7 +26,7 @@ exports.methods = function(config){
 
         // http://docs.opscode.com/api_chef_server_cookbooks_version.html#put
         editCookbookVersion: function(cookbook, version, data, fn){
-            http_methods.put([config.host_url, "cookbooks", cookbook, version].join("/"), data, function(err, response){
+            http_methods.put([config.host_url, "cookbooks", cookbook, version].join("/"), null, data, function(err, response){
                 return fn(err, response);
             });
         },
