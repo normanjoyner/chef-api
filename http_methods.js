@@ -13,8 +13,8 @@ exports.http_methods = function(config){
             });
         },
 
-        put: function(uri, data, fn){
-            operations.request(uri, null, data, "PUT", function(err, response){
+        put: function(uri, qs, data, fn){
+            operations.request(uri, qs, data, "PUT", function(err, response){
                 if(response && response.error){
                     err = new Error(response.error);
                     response = null;
@@ -24,8 +24,8 @@ exports.http_methods = function(config){
             });
         },
 
-        post: function(uri, data, fn){
-            operations.request(uri, null, data, "POST", function(err, response){
+        post: function(uri, qs, data, fn){
+            operations.request(uri, qs, data, "POST", function(err, response){
                 if(response && response.error){
                     err = new Error(response.error);
                     response = null;
