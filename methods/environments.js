@@ -17,6 +17,13 @@ exports.methods = function(config){
             });
         },
 
+        // http://docs.opscode.com/api_chef_server_environments_name.html#put
+        editEnvironment: function(environment, body, fn){
+            http_methods.put([config.host_url, "environments", environment].join("/"),null ,body, function(err, response){
+                return fn(err, response);
+            });
+        },
+
         // http://docs.opscode.com/api_chef_server_environments_name.html#get
         getEnvironment: function(environment, fn){
             http_methods.get([config.host_url, "environments", environment].join("/"), null, function(err, response){
