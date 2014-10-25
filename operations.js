@@ -78,26 +78,32 @@ exports.operations = function(config){
 
                 request(data, function(err, response){
                     if (response) {
-                      if(response.statusCode >= 200 && response.statusCode <= 206){
-                          try{
-                              return fn(null, JSON.parse(response.body));
-                          }
-                          catch(e){
-                              return fn(new Error("Cannot parse response body"), null);
-                          }
-                      }
-                      else{
-                          var message = ["Received status code:", response.statusCode].join(" ");
-                          try{
-                              var body = JSON.parse(response.body);
-                              if(_.has(body, "error"))
-                                  message = [message, body.error].join(" - ");
-                          }
-                          catch(e){
-                              return fn(new Error(message), null);
-                          }
-                          return fn(new Error(message), null);
-                      }
+                        if(response.statusCode >= 200 && response.statusCode <= 206){
+                            try{
+                                var err = null;
+                                var body = JSON.parse(response.body);
+                            }
+                            catch(e){
+                                var err = new Error("Cannot parse response body");
+                                var body = null;
+                            }
+                            return fn(err, body);
+                        }
+                        else{
+                            var message = ["Received status code:", response.statusCode].join(" ");
+                            try{
+                                var body = JSON.parse(response.body);
+                                if(_.has(body, "error"))
+                                    message = [message, body.error].join(" - ");
+
+                                var err = new Error(message);
+                            }
+                            catch(e){
+                                var err = new Error(message);
+                            }
+
+                            return fn(err, null)
+                        }
                     }
                     else {
                       return fn(err, null);
