@@ -17,6 +17,13 @@ exports.methods = function(config){
             });
         },
 
+        // http://docs.getchef.com/api_chef_server.html#id22
+        deleteDataBag: function(databag, fn){
+            http_methods.del([config.host_url, "data",  databag].join("/"), null, function(err, response){
+                return fn(err, response);
+            });
+        },
+
         // http://docs.opscode.com/api_chef_server_data_bag_item.html#get
         getDataBagItem: function(databag, item, fn){
             http_methods.get([config.host_url, "data",  databag, item].join("/"), null, function(err, response){
