@@ -17,7 +17,7 @@ exports.methods = function(config){
             });
         },
 
-        // http://docs.getchef.com/api_chef_server.html#id22
+        // http://docs.getchef.com/api_chef_server.html#id28
         deleteDataBag: function(databag, fn){
             http_methods.del([config.host_url, "data",  databag].join("/"), function(err, response){
                 return fn(err, response);
