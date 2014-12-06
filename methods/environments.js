@@ -17,6 +17,13 @@ exports.methods = function(config){
             });
         },
 
+        // http://docs.opscode.com/api_chef_server_environments_name.html#delete
+        deleteEnvironment: function(environment, fn){
+            http_methods.del([config.host_url, "environments", environment].join("/"), function(err, response){
+                return fn(err, response);
+            });
+        },
+
         // http://docs.opscode.com/api_chef_server_environments_name.html#put
         editEnvironment: function(environment, body, fn){
             http_methods.put([config.host_url, "environments", environment].join("/"),null ,body, function(err, response){
@@ -54,7 +61,6 @@ exports.methods = function(config){
 
         /*
             not yet implemented:
-            http://docs.opscode.com/api_chef_server_environments_name.html#delete
             http://docs.opscode.com/api_chef_server_environments_cookbook_version.html#post
             http://docs.opscode.com/api_chef_server_environments_recipe.html#get
             http://docs.opscode.com/api_chef_server_environments_role.html#get
