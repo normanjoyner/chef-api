@@ -56,7 +56,6 @@ exports.methods = function(config){
             not yet implemented:
             http://docs.opscode.com/api_chef_server_environments_name.html#delete
             http://docs.opscode.com/api_chef_server_environments_cookbook_version.html#post
-            http://docs.opscode.com/api_chef_server_environments_node.html#get
             http://docs.opscode.com/api_chef_server_environments_recipe.html#get
             http://docs.opscode.com/api_chef_server_environments_role.html#get
         */
