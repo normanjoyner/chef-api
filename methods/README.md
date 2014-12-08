@@ -36,6 +36,25 @@
     });
 ```
 
+###Search
+[Search indicies](http://docs.opscode.com/api_chef_server_search.html#get)
+```javascript
+    chef.getSearchIndices(function(err, indicies){
+    });
+```
+
+[Search node](http://docs.getchef.com/api_chef_server_search_index.html#GET)
+```javascript
+    chef.search("node", 'chef_environment:prod', function(err, node){
+    });
+```
+
+[Search node](http://docs.getchef.com/api_chef_server_search_index.html#POST)
+```javascript
+    chef.partialSearch("node", "chef_environment:prod", { name: 'name' }, function(err, cookbook){
+    });
+```
+
 ###Data Bags
 ```javascript
     chef.getDataBags(function(err, data_bags){
