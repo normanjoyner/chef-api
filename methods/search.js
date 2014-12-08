@@ -14,16 +14,17 @@ exports.methods = function(config){
 
         // http://docs.opscode.com/api_chef_server_search_index.html#get
         search: function(index, qs, fn){
-            http_methods.get([config.host_url, "search", index].join("/"), qs, function(err, response){
+            http_methods.get([config.host_url, "search", index].join("/"), {q: qs}, function(err, response){
                 return fn(err, response);
             });
         },
 
         // http://docs.opscode.com/api_chef_server_search_index.html#post
         partialSearch: function(index, qs, data, fn){
-            http_methods.post([config.host_url, "search", index].join("/"), qs, data, function(err, response){
+            http_methods.post([config.host_url, "search", index].join("/"), {q: qs}, data, function(err, response){
                 return fn(err, response);
             });
         }
     }
 }
+
