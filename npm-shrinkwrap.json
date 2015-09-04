@@ -115,8 +115,8 @@
       }
     },
     "ursa": {
-      "version": "0.8.0",
-      "from": "ursa@0.8.0"
+      "version": "0.8.5",
+      "from": "ursa@0.8.5"
     },
     "lodash": {
       "version": "2.2.1",
