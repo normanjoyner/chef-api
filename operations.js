@@ -71,6 +71,10 @@ exports.operations = function(config){
                         data.ca = config.ca;
                 }
 
+                if(config.hasOwnProperty('timeout')) {
+                    data.timeout = config.timeout
+                }
+
                 if(body){
                     data.body = JSON.stringify(body);
                     data.headers['Content-type'] = "application/json";
