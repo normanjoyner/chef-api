@@ -1,6 +1,6 @@
 {
   "name": "chef-api",
-  "version": "0.5.3",
+  "version": "0.5.4",
   "dependencies": {
     "lodash": {
       "version": "2.4.2",
