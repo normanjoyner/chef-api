@@ -29,6 +29,7 @@ var options = {
     organization: "myorganization", // (required unless using 'url') organization name for use with hosted chef
     url: "https://mychefserver.com:4000", // (required unless using 'organization') url for use with private chef server
     ca: "-----BEGIN CERTIFICATE-----\n...\n-----END CERTIFICATE-----", // (optional) if this key is omitted, then the default CA chain will be used. If null, the client will operate unsafely and not validate the server's certificate, it set to a certificate list explicitly, that list will be used as the CA chain.
+    timeout: 15000 // (optional) request timeout in ms
 }
 
 chef.config(options);
