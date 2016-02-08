@@ -5,7 +5,7 @@ exports.methods = function(config){
     return {
         // https://docs.chef.io/api_chef_server.html#status
         getStatus: function(fn){
-            http_methods.get([config.host_url, "/_status"].join("/"), null, function(err, response){
+            http_methods.get([config.host_url, "_status"].join("/"), null, function(err, response){
                 return fn(err, response);
             });
         }
