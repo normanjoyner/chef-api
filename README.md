@@ -27,7 +27,7 @@ var options = {
     key_path: "/Users/myusername/.chef/myusername.pem", // (required unless using 'key') path to private key
     key: "-----BEGIN RSA PRIVATE KEY-----\n...\n-----END RSA PRIVATE KEY-----", // (required unless using 'key_path') contents of private key
     organization: "myorganization", // (required unless using 'url') organization name for use with hosted chef
-    url: "https://mychefserver.com:4000", // (required unless using 'organization') url for use with private chef server
+    url: "https://mychefserver.com/organizations/SHORT_ORGNAME", // (required unless using 'organization') url for use with local chef server
     ca: "-----BEGIN CERTIFICATE-----\n...\n-----END CERTIFICATE-----", // (optional) if this key is omitted, then the default CA chain will be used. If null, the client will operate unsafely and not validate the server's certificate, it set to a certificate list explicitly, that list will be used as the CA chain.
     timeout: 15000 // (optional) request timeout in ms
 }
@@ -68,7 +68,7 @@ var chef = new ChefApi();
 var options = {
     client_name: "myclientname",
     key: "-----BEGIN RSA PRIVATE KEY-----\n...\n-----END RSA PRIVATE KEY-----",
-    url: "https://mychefserver.com:4000"
+    url: "https://mychefserver.com/organizations/default"
 }
 
 chef.config(options);
@@ -83,4 +83,4 @@ chef.getNode("mynodes.fqdn", function(err, res){
 
 ###API Methods
 
-chef-api provides a high level abstraction from the Chef Server API. Please consult the official docs at http://docs.opscode.com/api_chef_server.html for API specifics.
+chef-api provides a high level abstraction from the Chef Server API. Please consult the official docs at http://docs.chef.io/api_chef_server.html for API specifics.
