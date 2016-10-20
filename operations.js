@@ -4,7 +4,7 @@ var url = require('url');
 var crypto = require('crypto');
 var exec = require('child_process').exec;
 var _ = require("lodash");
-var key = require('ursa').coercePrivateKey;
+var forsake = require('forsake');
 
 exports.operations = function(config){
     return {
@@ -25,8 +25,6 @@ exports.operations = function(config){
                 return header.join(":");
             }).join("\n");
 
-            var signature = key(config.key_contents).privateEncrypt(request_headers, 'utf8', 'base64');
-
             var auth_headers = {
                 "Accept": "application/json",
                 "X-Ops-Timestamp": timestamp,
@@ -36,8 +34,10 @@ exports.operations = function(config){
                 "X-Ops-Sign": "version=1.0"
             };
 
+            var sig = forsake.sign(request_headers, config.key_contents).toString('base64');
+
             var auth_header_count = 0;
-            _.each(signature.match(/.{1,60}/g), function(signature_section){
+            _.each(sig.match(/.{1,60}/g), function(signature_section){
                 var name = ["X-Ops-Authorization", ++auth_header_count].join("-");
                 auth_headers[name] = signature_section;
             });
