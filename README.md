@@ -1,20 +1,20 @@
 chef-api
 ====================
 
-##About
+## About
 
-###Description
+### Description
 A simple client providing access the chef server api, implemented in nodejs
 
-###Author
+### Author
 Norman Joyner - norman.joyner@gmail.com
 
-##Getting Started
+## Getting Started
 
-###Installation
+### Installation
 ```npm install chef-api```
 
-###Configuration
+### Configuration
 
 Simply require the chef-api module, instantiate a new object, and call the ```.config()``` method to start accessing the Chef API.
 
@@ -37,7 +37,7 @@ chef.config(options);
 
 You are now free to make API calls.
 
-###Examples
+### Examples
 
 Example usage with hosted chef server, accessing API using a user's pem path:
 ```javascript
@@ -81,6 +81,6 @@ chef.getNode("mynodes.fqdn", function(err, res){
 });
 ```
 
-###API Methods
+### API Methods
 
 chef-api provides a high level abstraction from the Chef Server API. Please consult the official docs at http://docs.chef.io/api_chef_server.html for API specifics.
