@@ -21,7 +21,7 @@ exports.operations = function(config){
                 "X-Ops-UserId": config.name
             }
 
-            var request_headers = _.map(_.pairs(request_headers), function(header){
+            var request_headers = _.map(_.toPairs(request_headers), function(header){
                 return header.join(":");
             }).join("\n");
 
