@@ -4,7 +4,7 @@ var url = require('url');
 var crypto = require('crypto');
 var exec = require('child_process').exec;
 var _ = require("lodash");
-var key = require('ursa').coercePrivateKey;
+var NodeRSA = require('node-rsa');
 
 exports.operations = function(config){
     return {
@@ -25,7 +25,7 @@ exports.operations = function(config){
                 return header.join(":");
             }).join("\n");
 
-            var signature = key(config.key_contents).privateEncrypt(request_headers, 'utf8', 'base64');
+            var signature = new NodeRSA(config.key_contents).encryptPrivate(request_headers, 'base64', 'utf8');
 
             var auth_headers = {
                 "Accept": "application/json",
