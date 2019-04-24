@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "lodash": "^4.17.4",
-    "node-rsa": "0.4.2",
+    "node-rsa": "^0.4.2",
     "request": "^2.63.0"
   },
   "engines": {
