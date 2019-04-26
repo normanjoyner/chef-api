@@ -25,7 +25,7 @@ exports.operations = function(config){
                 return header.join(":");
             }).join("\n");
 
-            var signature = new NodeRSA(config.key_contents, 'private').encryptPrivate(request_headers, 'base64', 'utf8');
+            var signature = new NodeRSA(config.key_contents).encryptPrivate(request_headers, 'base64', 'utf8');
 
             var auth_headers = {
                 "Accept": "application/json",
